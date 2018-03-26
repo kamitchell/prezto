@@ -11,3 +11,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+alias gsb='git status -sb'
+bindkey -a v edit-command-line
+
+# Man pages in Vim
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 sw=4 nomod nolist nonu noma' -\""

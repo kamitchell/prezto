@@ -17,8 +17,10 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export VISUAL=$(which vim)
+export EDITOR=$VISUAL
+export FCEDIT=$VISUAL
+
 export PAGER='less'
 
 #
@@ -61,3 +63,19 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
+
+# From old .zshenv
+
+export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
+
+[ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
+
+# Add git if installed on Mac
+# Interactive only, to make sure that it doesn't interfere with Xcode
+[[ -o interactive ]] && [ -x /usr/local/git/bin/git ] && export PATH=/usr/local/git/bin:$PATH
+
+# CVS
+export CVSROOT=:pserver:kam@cvs.dlogics.com:/dl/cvsroot
+
+[ -d $HOME/src/dl ] && cdpath+=($HOME/src/dl)
+[ -d $HOME/src ] && cdpath+=($HOME/src)
