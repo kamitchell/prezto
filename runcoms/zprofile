@@ -64,6 +64,10 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
+# From old customized functions
+
+setenv () { export $1=$2; }
+
 # From old .zshenv
 
 export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
