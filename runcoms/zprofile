@@ -50,6 +50,12 @@ path=(
 )
 
 #
+# This allows us to say HEAD^ for Git without having to quote it
+#
+
+unsetopt EXTENDED_GLOB
+
+#
 # Less
 #
 
@@ -83,3 +89,23 @@ export CVSROOT=:pserver:kam@cvs.dlogics.com:/dl/cvsroot
 
 [ -d $HOME/src/dl ] && cdpath+=($HOME/src/dl)
 [ -d $HOME/src ] && cdpath+=($HOME/src)
+
+#
+# From old directories.zsh
+#
+unsetopt auto_name_dirs
+
+add_dir () {
+    if [ -d $2 ]
+    then
+        eval "$1=$2"
+        : ~$1
+    fi
+}
+
+add_dir RMSDK ~/src/dl/RMSDK/reader-mobile-sdk
+add_dir DLREADER ~/src/dl/RMSDK/reader-mobile-sdk/samples/iOSReferenceViewer
+add_dir PDFL9_SANDBOX ~/src/dl/PDFL8/apdfl9-sandbox
+add_dir PDFL10_SANDBOX ~/src/dl/PDFL8/apdfl-sandbox
+add_dir DLE ~/src/dl/PDFL8/apdfl-sandbox/DLE
+add_dir STOPR ~/src/dl/stopr
