@@ -1,4 +1,6 @@
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[ -f $HOME/.fzf.zsh ] || exit 0
+
+source $HOME/.fzf.zsh
 
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
