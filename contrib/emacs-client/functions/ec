@@ -1,0 +1,43 @@
+#!/bin/bash
+
+running=0
+terminal=0
+create_frame=
+
+case `uname` in
+    Darwin) display=$(hostname);;
+    *) display=${DISPLAY:-:0}
+esac
+
+# Figure out a server name
+# This was making a server for each git repo
+# server=$(git rev-parse --show-toplevel 2>/dev/null || echo "server")
+# server=$(basename $server)
+serverpointer=$(git rev-parse --show-toplevel 2>/dev/null || echo ".")/.emacs_server
+if [ -f "$serverpointer" ]
+then
+    server=$(cat "$serverpointer")
+else
+    server=server
+fi
+
+# find out if the server is running
+emacsclient -s $server -e "(frames-on-display-list \"$display\")" &> /dev/null && running=1
+
+# find out if the user has an opinion
+for arg in "$@"
+do
+    case "$arg" in
+        -nw) terminal=1;;
+        -t) terminal=1;;
+        --tty) terminal=1;;
+    esac
+done
+
+if [ $running -eq 0 -a $terminal -eq 0 ]
+then
+    create_frame=-c
+fi
+
+emacsclient -a "" -s $server $create_frame "$@"
+# vim: set et sts=4 sw=4 ts=4 :
