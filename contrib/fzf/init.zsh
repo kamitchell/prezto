@@ -1,6 +1,52 @@
-[ -f $HOME/.fzf.zsh ] || exit 0
+function _fzf_dir() {
+    case `uname` in
+        Darwin) echo $HOME/.fzf ;;
+        *) echo $HOME/.fzf-$(uname -s)-$(uname -m) ;;
+    esac
+}
 
-source $HOME/.fzf.zsh
+function _setup_fzf() {
+    local dir
+    dir=$(_fzf_dir)
+
+    # Setup fzf
+    # ---------
+    if [[ ! "$PATH" == *$dir/bin* ]]; then
+        export PATH="$PATH:$dir/bin"
+    fi
+
+    # Auto-completion
+    # ---------------
+    [[ $- == *i* ]] && source "$dir/shell/completion.zsh" 2> /dev/null
+
+    # Key bindings
+    # ------------
+    source "$dir/shell/key-bindings.zsh"
+}
+
+function install-fzf() {
+    local dir
+    dir=$(_fzf_dir)
+
+    git clone --depth 1 https://github.com/junegunn/fzf.git $dir
+    $dir/install --bin
+
+    _setup_fzf
+}
+
+function update-fzf() {
+    local dir
+    dir=$(_fzf_dir)
+
+    if [ -d $dir ]
+    then
+        (cd $dir && git pull && ./install --bin)
+    else
+        install-fzf
+    fi
+}
+
+[ -d $(_fzf_dir) ] && _setup_fzf
 
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
