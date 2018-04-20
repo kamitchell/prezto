@@ -47,6 +47,7 @@ zstyle ':prezto:load' pmodule \
   'ruby' \
   'python' \
   'git' \
+  'emacs-client' \
   'fzf' \
   'osx' \
   $gnu_utility \
