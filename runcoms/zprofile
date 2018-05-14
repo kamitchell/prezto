@@ -5,6 +5,9 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Set the SHELL for login shells to be the currently running zsh
+export SHELL=$0
+
 #
 # Browser
 #
