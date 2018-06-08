@@ -31,3 +31,6 @@
 [submodule "modules/prompt/external/powerlevel10k"]
 	path = modules/prompt/external/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "contrib/my_completions/external/zsh_completions"]
+	path = contrib/my_completions/external/zsh_completions
+	url = https://github.com/hhatto/zsh_completions
