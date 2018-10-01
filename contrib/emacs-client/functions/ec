@@ -2,11 +2,15 @@
 
 running=0
 terminal=0
+windowsys=0
 create_frame=
+force_terminal=
 
 case `uname` in
-    Darwin) display=$(hostname);;
+    Darwin) display=$(hostname); windowsys=1;;
     *) display=${DISPLAY:-:0}
+       xdpyinfo >/dev/null 2>/dev/null && windowsys=1
+       ;;
 esac
 
 # Figure out a server name
@@ -34,10 +38,16 @@ do
     esac
 done
 
+if [ $terminal -eq 0 -a $windowsys -eq 0 ]
+then
+    terminal=1
+    force_terminal=--tty
+fi
+
 if [ $running -eq 0 -a $terminal -eq 0 ]
 then
     create_frame=-c
 fi
 
-emacsclient -a "" -s $server $create_frame "$@"
+emacsclient -a "" -s $server $create_frame $force_terminal "$@"
 # vim: set et sts=4 sw=4 ts=4 :
