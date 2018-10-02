@@ -1,3 +1,12 @@
 #!/bin/bash
 
+nowait=-n
+
+case `uname` in
+    Darwin) display=$(hostname); windowsys=1;;
+    *) display=${DISPLAY:-:0}
+       xdpyinfo >/dev/null 2>/dev/null || nowait=
+       ;;
+esac
+
 ec -e '(magit-status)'
