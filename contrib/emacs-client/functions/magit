@@ -9,4 +9,4 @@ case `uname` in
        ;;
 esac
 
-ec -e '(magit-status)'
+ec $nowait -e '(magit-status)'
