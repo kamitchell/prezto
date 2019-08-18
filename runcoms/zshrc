@@ -5,6 +5,10 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Custom key bindings
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -12,8 +16,25 @@ fi
 
 # Customize to your needs...
 
+setopt ignoreeof
 alias gsb='git status -sb'
 bindkey -a v edit-command-line
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+iterm2_print_user_vars() {
+    iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+    local git_project_name=$(basename $(git rev-parse --show-toplevel 2> /dev/null) 2> /dev/null)
+    local pretty_wd=$(prompt-pwd || $(basename $PWD) 2> /dev/null)
+    if [ -z "$git_project_name" -o "$git_project_name" = "~" ]
+    then
+        iterm2_set_user_var gitProjectOrPrettyWd "$pretty_wd"
+    else
+        iterm2_set_user_var gitProjectOrPrettyWd "$git_project_name"
+    fi
+
+    iterm2_set_user_var gitProjectName "$git_project_name"
+    iterm2_set_user_var prettyWd "$pretty_wd"
+}
 # Man pages in Vim
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 sw=4 nomod nolist nonu noma' -\""
