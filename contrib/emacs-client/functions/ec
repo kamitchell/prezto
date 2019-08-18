@@ -5,6 +5,7 @@ terminal=0
 windowsys=0
 create_frame=
 force_terminal=
+env=
 
 case `uname` in
     Darwin) display=$(hostname); windowsys=1;;
@@ -49,5 +50,8 @@ then
     create_frame=-c
 fi
 
-emacsclient -a "" -s $server $create_frame $force_terminal "$@"
+# See if we have a terminal entry for xterm-24bit
+infocmp xterm-24bit >/dev/null 2>/dev/null && env=TERM=xterm-24bit
+
+env $env emacsclient -a "" -s $server $create_frame $force_terminal "$@"
 # vim: set et sts=4 sw=4 ts=4 :
