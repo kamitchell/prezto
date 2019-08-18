@@ -120,3 +120,7 @@ add_dir PDFL9_SANDBOX ~/src/dl/PDFL8/apdfl9-sandbox
 add_dir PDFL10_SANDBOX ~/src/dl/PDFL8/apdfl-sandbox
 add_dir DLE ~/src/dl/PDFL8/apdfl-sandbox/DLE
 add_dir STOPR ~/src/dl/stopr
+
+# Fastlane
+
+[ -d $HOME/.fastlane/bin ] && export PATH=$HOME/.fastlane/bin:$PATH
