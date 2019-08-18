@@ -35,6 +35,7 @@ fi
 
 zstyle ':prezto:load' pmodule \
   'environment' \
+  'terminfo' \
   'terminal' \
   'editor' \
   'history' \
