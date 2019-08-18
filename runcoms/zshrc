@@ -36,5 +36,16 @@ iterm2_print_user_vars() {
     iterm2_set_user_var gitProjectName "$git_project_name"
     iterm2_set_user_var prettyWd "$pretty_wd"
 }
+
+# Override to get the prompt as we have it here
+iterm2_print_state_data() {
+    printf "\033]1337;RemoteHost=%s@%s\007" "$USER" "$iterm2_hostname"
+    printf "\033]1337;CurrentDir=%s\007" "$(prompt-pwd || echo "$PWD")"
+    iterm2_print_user_vars
+}
+
+# Make the hostname in iterm2 short, to match the prompt
+iterm2_hostname=${HOSTNAME%%.*}
+
 # Man pages in Vim
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 sw=4 nomod nolist nonu noma' -\""
