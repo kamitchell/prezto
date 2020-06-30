@@ -49,3 +49,6 @@ iterm2_hostname=${HOSTNAME%%.*}
 
 # Man pages in Vim
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 sw=4 nomod nolist nonu noma' -\""
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
