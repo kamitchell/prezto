@@ -124,3 +124,24 @@ add_dir STOPR ~/src/dl/stopr
 # Fastlane
 
 [ -d $HOME/.fastlane/bin ] && export PATH=$HOME/.fastlane/bin:$PATH
+
+# Per-host directories for machines on raid
+
+if [[ "$OSTYPE" != darwin* ]]; then
+    function () {
+        local hostname=`hostname`
+        export BYHOST=$HOME/.byhost/$hostname
+        export XDG_DATA_HOME=$BYHOST/.local/share
+        export XDG_CACHE_HOME=$BYHOST/.cache
+        export PYTHONUSERBASE=$BYHOST/.local
+
+        export PYENV_ROOT=$BYHOST/.pyenv
+        export PATH="$PYENV_ROOT/bin:$BYHOST/root/bin:$PATH"
+        mkdir -p $XDG_DATA_HOME $PYTHONUSERBASE $XDG_CACHE_HOME
+        chmod 700 $XDG_CACHE_HOME
+
+        if [ -d /devlocal/$LOGNAME ]; then
+            export CONAN_USER_HOME=/devlocal/$LOGNAME
+        fi
+    }
+fi
