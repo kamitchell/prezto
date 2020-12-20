@@ -30,6 +30,13 @@ if [[ "$OSTYPE" != (darwin|linux)* ]]; then
   gnu_utility='gnu-utility'
 fi
 
+case $OSTYPE
+in
+    solaris*) ;;
+    aix*) ;;
+    *) fzf='fzf' ;;
+esac
+
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminfo' \
@@ -43,7 +50,7 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'git' \
   'emacs-client' \
-  'fzf' \
+  $fzf \
   'osx' \
   $gnu_utility \
   'completion' \
