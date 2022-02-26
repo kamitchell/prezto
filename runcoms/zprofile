@@ -145,3 +145,9 @@ if [[ "$OSTYPE" != darwin* ]]; then
         fi
     }
 fi
+
+# Created by `pipx` on 2022-02-10 15:57:51
+export PATH="$PATH:/Users/kam/.local/bin"
+
+# Pyenv, per https://github.com/pyenv/pyenv#advanced-configuration
+eval "$(pyenv init --path)"
