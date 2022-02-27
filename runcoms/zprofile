@@ -146,8 +146,22 @@ if [[ "$OSTYPE" != darwin* ]]; then
     }
 fi
 
-# Created by `pipx` on 2022-02-10 15:57:51
-export PATH="$PATH:/Users/kam/.local/bin"
+##
+# Your previous /Users/kevin/.zprofile file was backed up as /Users/kevin/.zprofile.macports-saved_2021-01-24_at_15:03:41
+##
 
-# Pyenv, per https://github.com/pyenv/pyenv#advanced-configuration
-eval "$(pyenv init --path)"
+# MacPorts Installer addition on 2021-01-24_at_15:03:41: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# MacPorts Installer addition on 2021-01-24_at_15:03:41: adding an appropriate DISPLAY variable for use with MacPorts.
+export DISPLAY=:0
+# Finished adapting your DISPLAY environment variable for use with MacPorts.
+
+# Homebrew
+
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -x /usr/local/bin/brew ] && eval "$(/usr/local/bin/brew shellenv)"
+
+# Created by `pipx` on 2021-05-22 04:29:10
+export PATH="$PATH:/Users/kevin/.local/bin"
