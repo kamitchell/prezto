@@ -57,5 +57,5 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 sw=4 nomod nolist
 export PATH="$PATH:/Users/kam/.local/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/kevin/.sdkman"
-[[ -s "/Users/kevin/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/kevin/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
