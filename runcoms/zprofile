@@ -22,13 +22,7 @@ fi
 # Editors
 #
 
-if (( $+commands[emacs] )); then
-    # In the emacs-client module
-    export VISUAL=ec
-    export GIT_EDITOR=$(which vim)
-else
-    export VISUAL=$(which vim)
-fi
+export VISUAL=$(which vim)
 export EDITOR=$VISUAL
 export FCEDIT=$VISUAL
 
