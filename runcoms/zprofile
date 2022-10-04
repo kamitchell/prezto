@@ -98,6 +98,7 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 # CVS
 export CVSROOT=:pserver:kam@cvs.dlogics.com:/dl/cvsroot
 
+[ -d $HOME/src/dl/OCR ] && cdpath+=($HOME/src/dl/OCR)
 [ -d $HOME/src/dl ] && cdpath+=($HOME/src/dl)
 [ -d $HOME/src ] && cdpath+=($HOME/src)
 
