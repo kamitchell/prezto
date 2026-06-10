@@ -91,3 +91,6 @@ then
   export VOLTA_HOME="$HOME/.volta"
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
+
+# Added by Windsurf
+[ -d ~/.codeium/windsurf/bin ] && export PATH="$HOME/.codeium/windsurf/bin:$PATH"
