@@ -94,3 +94,6 @@ fi
 
 # Added by Windsurf
 [ -d ~/.codeium/windsurf/bin ] && export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+
+# Added by Antigravity
+[ -d ~/.antigravity/antigravity/bin ] && export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
