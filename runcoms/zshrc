@@ -85,3 +85,9 @@ source /Users/kam/.config/op/plugins.sh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -d ~/.volta ]
+then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
