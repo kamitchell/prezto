@@ -5,11 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# Set the SHELL for login shells to be the currently running zsh
-# Note that 'which' works with full paths, too.
-# The substitution takes off any leading -
-export SHELL=$(which ${0#-})
-
 #
 # Browser
 #
